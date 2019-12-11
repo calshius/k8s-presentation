@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1 # for versions before 1.14 use extensions/v1beta1
+kind: Ingress
+metadata:
+  name: grafana-ingress
+  annotations:
+    kubernetes.io/ingress.class: addon-http-application-routing
+spec:
+ rules:
+ - host: grafana-app.6dc3131a0b184f5489c2.centralus.aksapp.io
+   http:
+     paths:
+     - path: /
+       backend:
+         serviceName: monitoring-grafana
+         servicePort: 80
